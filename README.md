@@ -1,4 +1,4 @@
-# 🔐 hashguard-os
+# hashguard-os
 
 A Python-based password strength analyzer that checks your passwords against common patterns, leaked databases, and calculates entropy to give you a real security score.
 
