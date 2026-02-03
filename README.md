@@ -52,7 +52,3 @@ Your passwords never leave your machine in plain text. The breach check uses k-a
 ## License
 
 MIT
-
-## Author
-
-Built by [ospw](https://github.com/ospw)
