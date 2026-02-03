@@ -48,5 +48,6 @@ Passwords never leave your machine in plain text. Breach checks use k-anonymity,
 
 ## License
 
-MIT
+MIT (= Do whatever you want with it, just credit me when republishing or making additions)
+
 
