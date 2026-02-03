@@ -17,8 +17,6 @@ from typing import Dict, List
 
 
 # Top 100 most common passwords hardcoded as a fallback
-# These are from various breach analyses
-# Having these hardcoded means we can always check the worst offenders
 TOP_COMMON_PASSWORDS = [
     "123456", "password", "12345678", "qwerty", "123456789",
     "12345", "1234", "111111", "1234567", "dragon",
@@ -53,9 +51,9 @@ def load_password_list(filepath: str = None) -> set:
     
     passwords = set(TOP_COMMON_PASSWORDS)
     
-    # Try to load extended list from file
+    # try to load extended list from file
     if filepath is None:
-        # Default path relative to this file's location
+        # Default path relative to this files location
         current_dir = os.path.dirname(os.path.abspath(__file__))
         filepath = os.path.join(current_dir, "..", "data", "common_passwords.txt")
     
