@@ -44,8 +44,9 @@ python main.py -p "your_password" --offline
 
 ## Privacy
 
-Passwords never leave your machine in plain text. Breach checks use k-anonymity — only the first 5 characters of the SHA-1 hash are sent to the API.
+Passwords never leave your machine in plain text. Breach checks use k-anonymity, meaning... only the first 5 characters of the SHA-1 hash are sent to the API.
 
 ## License
 
 MIT
+
