@@ -17,8 +17,8 @@ import re
 from typing import List, Dict
 
 
-# Common keyboard walks that people use
-# These are super common and attackers always check them first
+# Common keyboard walks people use
+# super common ones, attackers always check these first
 KEYBOARD_WALKS = [
     # Horizontal rows
     "qwerty", "qwertyuiop", "asdf", "asdfgh", "asdfghjkl", 
@@ -35,7 +35,6 @@ KEYBOARD_WALKS = [
 ]
 
 # Common l33t speak substitutions
-# People think p@ssw0rd is clever but it's not
 LEET_MAP = {
     '@': 'a',
     '4': 'a',
@@ -95,7 +94,7 @@ def detect_patterns(password: str) -> Dict:
         details.append(f"Date pattern detected: '{date_result}'")
         penalty += 10
     
-    # Check for l33t speak (reveals the actual word)
+    # Check for l33t speak (reveals)
     leet_result = check_leetspeak(password)
     if leet_result:
         patterns_found.append("leetspeak")
@@ -109,7 +108,7 @@ def detect_patterns(password: str) -> Dict:
         details.append(f"Common suffix: '{suffix_result}'")
         penalty += 5
     
-    # Cap penalty at 50 so patterns alone don't destroy the score
+    # Cap penalty at 50 so patterns alone dont destroy the score
     penalty = min(penalty, 50)
     
     return {
