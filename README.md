@@ -1,12 +1,12 @@
 # hashguard-os
 
-A Python-based password strength analyzer that checks your passwords against common patterns, leaked databases, and calculates entropy to give you a real security score.
+A Python-based password strength analyzer that checks your passwords against common patterns, leaked databases, and calculates entropy to give you a security score.
 
 ## Features
 
 - **Entropy Analysis** — Calculates password randomness in bits
-- **Pattern Detection** — Catches weak patterns like `qwerty`, `123456`, repeated chars, dates
-- **Dictionary Attack Check** — Compares against 10,000+ common passwords
+- **Pattern Detection** — Catches weak patterns like `qwerty`, `123456`, repeated chars, dates etc.
+- **Dictionary Attack Check** — Compares against 10.000+ common passwords
 - **Breach Detection** — Queries HaveIBeenPwned API to check if your password has been leaked
 - **Smart Scoring** — Combines all factors into a clear 0-100 strength score
 - **Actionable Feedback** — Tells you exactly what's wrong and how to fix it
@@ -52,3 +52,4 @@ Your passwords never leave your machine in plain text. The breach check uses k-a
 ## License
 
 MIT
+
