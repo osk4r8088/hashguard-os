@@ -1,7 +1,7 @@
 """
 breach_check.py - Check if password has been leaked in data breaches
 
-This uses the HaveIBeenPwned (HIBP) API to check if your password
+This uses the HaveIBeenPwned API to check if your password
 has appeared in known data breaches. Their database has billions
 of leaked passwords from major breaches.
 
@@ -24,7 +24,7 @@ from typing import Dict, Optional
 # HaveIBeenPwned API endpoint for password checking
 HIBP_API_URL = "https://api.pwnedpasswords.com/range/"
 
-# Timeout for API requests (seconds)
+# Timeout for API requests (in seconds)
 REQUEST_TIMEOUT = 10
 
 
@@ -46,40 +46,39 @@ def check_breach(password: str) -> Dict:
     }
     
     try:
-        # Step 1: Hash the password with SHA-1
-        # HIBP uses SHA-1 because that's what most breached databases used
+        # Step 1 Hash password with SHA-1 (cause HIBP uses it)
         sha1_hash = hashlib.sha1(password.encode('utf-8')).hexdigest().upper()
         
-        # Step 2: Split the hash into prefix (5 chars) and suffix (rest)
-        # We only send the prefix to the API for privacy
+        # Step 2 Split hash into prefix (5 chars) and suffix (rest)
+        # only send prefix to API for privacy
         prefix = sha1_hash[:5]
         suffix = sha1_hash[5:]
         
-        # Step 3: Query the API with just the prefix
+        # Step 3 Query API with just the prefix
         response = requests.get(
             f"{HIBP_API_URL}{prefix}",
             timeout=REQUEST_TIMEOUT,
             headers={
-                # Be a good citizen - identify ourselves
+                # identify ourselves
                 "User-Agent": "hashguard-os-password-checker"
             }
         )
         
-        # Check if request was successful
+        # Check if request = successful
         if response.status_code != 200:
             result["error"] = f"API returned status {response.status_code}"
             return result
         
         result["checked"] = True
         
-        # Step 4: Parse the response and look for our hash suffix
+        # Step 4 Parse response and look for hash suffix
         # Response format is: HASH_SUFFIX:COUNT\r\n for each match
         # Example: 1E4C9B93F3F0682250B6CF8331B7EE68:3645804
         for line in response.text.splitlines():
             if ':' in line:
                 hash_suffix, count = line.split(':')
                 
-                # Check if this suffix matches our password's hash
+                # Check if suffix matches our passwords hash
                 if hash_suffix == suffix:
                     result["is_breached"] = True
                     result["breach_count"] = int(count)
@@ -113,7 +112,7 @@ def check_breach(password: str) -> Dict:
                     
                     break
         
-        # If we got here without finding a match, the password is clean
+        # If we got here without a match = the password is clean
         if not result["is_breached"]:
             result["details"].append("Password not found in known data breaches ✓")
         
