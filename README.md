@@ -1,55 +1,51 @@
 # hashguard-os
 
-A Python-based password strength analyzer that checks your passwords against common patterns, leaked databases, and calculates entropy to give you a security score.
+Password strength analyzer that checks against common patterns, leaked databases, and calculates entropy.
 
 ## Features
 
-- **Entropy Analysis** — Calculates password randomness in bits
-- **Pattern Detection** — Catches weak patterns like `qwerty`, `123456`, repeated chars, dates etc.
-- **Dictionary Attack Check** — Compares against 10.000+ common passwords
-- **Breach Detection** — Queries HaveIBeenPwned API to check if your password has been leaked
-- **Smart Scoring** — Combines all factors into a clear 0-100 strength score
-- **Actionable Feedback** — Tells you exactly what's wrong and how to fix it
+- Entropy calculation (password randomness in bits)
+- Pattern detection (keyboard walks, repeated chars, dates, l33t speak)
+- Dictionary check against 10.000+ common passwords
+- Breach detection via HaveIBeenPwned API
+- 0-100 strength score with detailed feedback
 
 ## Installation
-
 ```bash
-# Clone the repo
-git clone https://github.com/YOUR_USERNAME/hashguard-os.git
+git clone https://github.com/osk4r8088/hashguard-os.git
 cd hashguard-os
-
-# Install dependencies
 pip install -r requirements.txt
 ```
 
 ## Usage
-
 ```bash
-# Basic usage
+# Interactive mode
 python main.py
 
-# Check a specific password
-python main.py --password "your_password_here"
+# Direct check
+python main.py -p "your_password"
 
-# Verbose output with all details
-python main.py --verbose
+# Verbose output
+python main.py -p "your_password" --verbose
+
+# Skip breach check (offline)
+python main.py -p "your_password" --offline
 ```
 
-## How Scoring Works
+## Scoring
 
 | Score | Rating | Meaning |
 |-------|--------|---------|
-| 0-20 | 💀 Critical | Instantly crackable |
-| 21-40 | 🔴 Weak | Minutes to crack |
-| 41-60 | 🟠 Fair | Could be stronger |
-| 61-80 | 🟢 Strong | Good for most uses |
-| 81-100 | 🛡️ Excellent | Very secure |
+| 0-20 | Critical | Instantly crackable |
+| 21-40 | Weak | Crackable in minutes |
+| 41-60 | Fair | Could be stronger |
+| 61-80 | Strong | Good for most uses |
+| 81-100 | Excellent | Very secure |
 
 ## Privacy
 
-Your passwords never leave your machine in plain text. The breach check uses k-anonymity — only the first 5 characters of the SHA-1 hash are sent to the API, so your actual password stays private.
+Passwords never leave your machine in plain text. Breach checks use k-anonymity — only the first 5 characters of the SHA-1 hash are sent to the API.
 
 ## License
 
 MIT
-
