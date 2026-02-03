@@ -1,0 +1,10 @@
+# hashguard-os dependencies
+
+# For making HTTP requests to the HaveIBeenPwned API
+requests>=2.28.0
+
+# For pretty terminal output (colors, tables, progress bars)
+rich>=13.0.0
+
+# For building the CLI interface with arguments and commands
+typer>=0.9.0
