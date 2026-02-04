@@ -5,12 +5,10 @@ Password strength analyzer that checks against common patterns, leaked databases
 ## Features
 
 - Entropy calculation (password randomness in bits)
-- Pattern detection (keyboard walks, repeated chars, dates, l33t speak))
+- Pattern detection (keyboard walks, repeated chars, dates, l33t speak)) [kinda broken]
 - Dictionary check against 10.000+ common passwords
-- Breach detection via HaveIBeenPwned API
-- 0-100 strength score with detailed feedback
-some features dont work properly
-
+- Breach detection via HaveIBeenPwned API [more work needed]
+- 0-100 strength score with detailed feedback [more work needed]
 ## Installation
 ```bash
 git clone https://github.com/osk4r8088/hashguard-os.git
@@ -50,6 +48,7 @@ Passwords never leave your machine in plain text. Breach checks use k-anonymity,
 ## License
 
 MIT (= Do whatever you want with it, just credit me when republishing or making additions)
+
 
 
 
